@@ -72,7 +72,7 @@ class NewsFeedClient
     public function fetchSources()
     {
         $endpoint = "https://newsapi.org/v2/top-headlines/sources";
-        $params = ["apiKey" => 'b4bfc52e4dcc473e95503028dcf838e2'];
+        $params = ["apiKey" => env("NEWSAPI_KEY", "test")];
         return Http::get($endpoint, $params)->json();
     }
 
