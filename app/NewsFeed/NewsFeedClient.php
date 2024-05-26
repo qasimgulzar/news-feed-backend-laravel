@@ -3,6 +3,7 @@
 namespace App\NewsFeed;
 
 use Illuminate\Support\Facades\Http;
+use League\Flysystem\Config;
 
 class NewsFeedClient
 {
@@ -30,7 +31,7 @@ class NewsFeedClient
                 $params['pageSize'] = $request->query('pageSize');
                 $params['section'] = $request->query('section');
                 $params['sources'] = $request->query('source');
-                $params['apiKey'] = 'b4bfc52e4dcc473e95503028dcf838e2';
+                $params['apiKey'] = env("NEWSAPI_KEY", "test");
                 $params['from'] = '2024-05-22';
                 break;
             }
@@ -43,7 +44,7 @@ class NewsFeedClient
                 $params['q'] = $request->query('q');
                 $params['page'] = $request->query('page');
                 $params['page-size'] = $request->query('pageSize');
-                $params['api-key'] = 'test';
+                $params['api-key'] = env("GUARDIANAPI_KEY", "test");;
                 break;
             }
         }
